@@ -1,24 +1,24 @@
 {
-    "name": "delwathon/grade-module",
-    "description": "Grade-module is a module that comprises Mark, Distribution and Grade",
-    "type": "library",
-    "authors": [
-        {
-            "name": "Toyibu Abidogun",
-            "email": "toyibu.abidogun@delwathon.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "license": "MIT",
-    "extra": {
-        "laravel": {
-            "providers": [],
-            "aliases": {}
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Modules\\Grade\\": ""
-        }
+  "name": "delwathon/grade-module",
+  "description": "Grade-module is a module that manages Mark, Distribution and Grade for eduthon product",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Toyibu Abidogun",
+      "email": "toyibu.abidogun@delwathon.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "extra": {
+    "laravel": {
+      "providers": [],
+      "aliases": {}
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\Grade\\": ""
+    }
+  }
 }
