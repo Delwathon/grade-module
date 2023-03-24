@@ -7,4 +7,4 @@
 
 -   Mark contains Mark Controller which is responsible for alloting marks to students.
 -   Distribution contains Distribution controller which is responsible for distributing marks for classes
--   Grade contains Grade Controller which is responsible for attaching grades to range of scores
+-   Grade contains Grade Controller which is responsible for attaching grades to range of scores.

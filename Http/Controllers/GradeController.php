@@ -3,10 +3,10 @@
 namespace Modules\Grade\Http\Controllers;
 
 use App\Models\Branch;
-use App\Models\Session;
 use Illuminate\Http\Request;
 use Modules\Grade\Entities\Grade;
 use Illuminate\Routing\Controller;
+use Modules\Academics\Entities\Session;
 use Illuminate\Contracts\Support\Renderable;
 
 class GradeController extends Controller

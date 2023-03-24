@@ -3,18 +3,19 @@
 namespace Modules\Grade\Http\Controllers;
 
 use App\Models\Branch;
-use App\Models\SClass;
-use App\Models\Section;
-use App\Models\Session;
-use App\Models\Student;
-use App\Models\Subject;
+
 use Illuminate\Http\Request;
-use App\Models\AssignSubject;
 use Modules\Grade\Entities\Mark;
-use Modules\Grade\Entities\Term;
 use Illuminate\Routing\Controller;
+use Modules\Academics\Entities\Term;
+use Modules\Admission\Entities\Enrol;
+use Modules\Academics\Entities\SClass;
+use Modules\Academics\Entities\Section;
+use Modules\Academics\Entities\Session;
+use Modules\Academics\Entities\Subject;
 use Modules\Grade\Entities\Distribution;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\Academics\Entities\AssignSubject;
 
 class MarkController extends Controller
 {
@@ -55,7 +56,7 @@ class MarkController extends Controller
         $session = Session::find($session);
         // return $section;
         $subject = Subject::find($subject);
-        $students = Student::with(['branch', 'dept', 'user', 'state', 'lga', 'class', 'section', 'guardian'])
+        $enrols = Enrol::with(['branch', 'dept', 'class', 'section', 'student'])
             // ->whereHas('', function ($query) use ($section, $branch, $class) {
             // $query
             //    ->orderBy('id', 'desc')
@@ -64,11 +65,12 @@ class MarkController extends Controller
             ->where([
                 'branch_id' => $branch->id,
                 'section_id' => $section->id,
-                's_class_id' => $class->id
+                's_class_id' => $class->id,
+                'session_id' => $session->id
             ])
             // })
             ->get();
-        // return $students;
+        // return $enrols;
         $classes = SClass::whereHas('branches', function ($query) use ($branch) {
             $query->where('branch_id', $branch->id);
         })->get();
@@ -82,7 +84,7 @@ class MarkController extends Controller
         // return $subjects;
         $distributions = Distribution::with([])->where(['branch_id' => $branch->id, 'session_id' => $session->id, 's_class_id' => $class->id])->get();
         // return $distributions;
-        foreach ($students as $student) {
+        foreach ($enrols as $enrol) {
             # code...
             // echo $value;
             foreach ($distributions as $distribution) {
@@ -93,7 +95,7 @@ class MarkController extends Controller
                     'session_id' => $session->id,
                     'subject_id' => $subject->id,
                     'term_id' => $term->id,
-                    'student_id' => $student->id,
+                    'student_id' => $enrol->student->id,
                     'distribution_id' => $distribution->id,
                     // 'mark'=>$mark
                 ]);
@@ -108,7 +110,7 @@ class MarkController extends Controller
             'marks',
             'term',
             'session',
-            'students',
+            'enrols',
             'class',
             'section',
             'branch',

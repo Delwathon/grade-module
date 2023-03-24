@@ -3,13 +3,13 @@
 namespace Modules\Grade\Entities;
 
 use App\Models\Branch;
-use App\Models\SClass;
-use App\Models\Section;
-use App\Models\Session;
-use App\Models\Student;
-use App\Models\Subject;
-use Modules\Grade\Entities\Term;
+use Modules\Academics\Entities\Term;
+use Modules\Student\Entities\Student;
+use Modules\Academics\Entities\SClass;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Academics\Entities\Section;
+use Modules\Academics\Entities\Session;
+use Modules\Academics\Entities\Subject;
 use Modules\Grade\Entities\Distribution;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
